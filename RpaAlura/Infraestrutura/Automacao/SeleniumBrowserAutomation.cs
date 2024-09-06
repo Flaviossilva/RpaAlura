@@ -54,6 +54,20 @@ namespace RpaAlura.Infraestrutura.Automacao
                 var duration = courseElement.FindElement(By.CssSelector(".course-duration")).Text;
                 var description = courseElement.FindElement(By.CssSelector(".course-description")).Text;
 
+
+                var t = "teste";
+                var p = "teste";
+                var du = "teste";
+                var de = "teste";
+
+                courses.Add(new Course
+                {
+                    Title = t,
+                    Professor = p,
+                    Duration = du,
+                    Description = de
+                });
+
                 courses.Add(new Course
                 {
                     Title = title,

@@ -21,11 +21,11 @@ namespace RpaAlura.Infraestrutura.Persistencia
 
                 foreach (var course in courses)
                 {
-                    var command = new SqlCommand("INSERT INTO Courses (Title, Professor, Duration, Description) VALUES (@Title, @Professor, @Duration, @Description)", connection);
-                    command.Parameters.AddWithValue("@Title", course.Title);
+                    var command = new SqlCommand("INSERT INTO Courses (Titulo, Professor, Carga_Horaria, Descricao) VALUES (@Titulo, @Professor, @Carga_Horaria, @Descricao)", connection);
+                    command.Parameters.AddWithValue("@Titulo", course.Title);
                     command.Parameters.AddWithValue("@Professor", course.Professor);
-                    command.Parameters.AddWithValue("@Duration", course.Duration);
-                    command.Parameters.AddWithValue("@Description", course.Description);
+                    command.Parameters.AddWithValue("@Carga_Horaria", course.Duration);
+                    command.Parameters.AddWithValue("@Descricao", course.Description);
                     await command.ExecuteNonQueryAsync();
                 }
             }
