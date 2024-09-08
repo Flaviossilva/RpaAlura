@@ -11,7 +11,7 @@ class Program
         var formAutomationService = serviceProvider.GetRequiredService<IFormAutomationService>();
 
         // Inicia a automação
-        Console.WriteLine("Digite o termo de busca:");
+        Console.WriteLine("Digite o termo de buscas:");
         string? searchTerm = Console.ReadLine();
 
         await formAutomationService.ExecuteFormFillingAsync(searchTerm);
