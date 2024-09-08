@@ -19,8 +19,8 @@ namespace RpaAlura.Rpa
         {
             try
             {
-                await _browserAutomation.SearchAsync(searchTerm);
-                var courses = await _browserAutomation.GetSearchResultsAsync();
+              
+                var courses = _browserAutomation.SearchAsync(searchTerm);
                 await _courseRepository.SaveCoursesAsync(courses);
                 Console.WriteLine("Automação concluída com sucesso!");
             }

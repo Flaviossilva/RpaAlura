@@ -12,7 +12,7 @@ class Program
 
         // Inicia a automação
         Console.WriteLine("Digite o termo de busca:");
-        string searchTerm = Console.ReadLine();
+        string? searchTerm = Console.ReadLine();
 
         await formAutomationService.ExecuteFormFillingAsync(searchTerm);
     }

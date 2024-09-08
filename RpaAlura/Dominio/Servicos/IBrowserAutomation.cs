@@ -9,8 +9,7 @@ namespace RpaAlura.Dominio.Servicos
 {
     public interface IBrowserAutomation
     {
-        Task SearchAsync(string term);
-        Task<List<Course>> GetSearchResultsAsync();
+        List<Course> SearchAsync(string term);
     }
 }
 
