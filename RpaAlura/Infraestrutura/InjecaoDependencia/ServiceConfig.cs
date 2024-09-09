@@ -26,9 +26,9 @@ namespace RpaAlura.Infraestrutura.InjecaoDependencia
                 {
                     DataSource = "VC0003\\SQLEXPRESS01",
                     InitialCatalog = "RpaAlura",
-                    UserID = "loteador",
+                    UserID = "Desenvolvedor",
                     TrustServerCertificate = true,
-                    Password = "mediterraneo"
+                    Password = "rpaalura"
                 };
                 return new SqlCourseRepository(builder.ConnectionString);
             }); services.AddScoped<IFormAutomationService, FormAutomationService>();
