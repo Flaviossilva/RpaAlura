@@ -20,27 +20,10 @@ namespace RpaAlura.Infraestrutura.Automacao
             _driver = driver;
         }
 
-        public List<Course> SearchAsync(string term)
+        public List<Course> Search(string term)
         {
-            _driver.Navigate().GoToUrl("https://www.alura.com.br/");
-            Thread.Sleep(1000);
-            var searchBox = _driver.FindElement(By.XPath("/html/body/main/section[1]/header/div/nav/div[2]/form/input"));
-            Thread.Sleep(1000);
-            var ButonFilter = _driver.FindElement(By.XPath("/html/body/main/section[1]/header/div/nav/div[2]/form/input"));
-            Thread.Sleep(1000);
-            ButonFilter.Click();
-            searchBox.SendKeys(term);
-            searchBox.Submit();
-            var ButtonCourse = _driver.FindElement(By.XPath("/html/body/div[2]/div[2]/div/span"));
-            Thread.Sleep(1000);
-            ButtonCourse.Click();
-            var filter = _driver.FindElement(By.XPath("/html/body/div[2]/div[1]/div[2]/ul/li[1]/label"));
-            filter.Click();
-            var ButtonFilterResult = _driver.FindElement(By.XPath("/html/body/div[2]/div[1]/button"));
-            Thread.Sleep(1000);
-            ButtonFilterResult.Click();
             List<Course> ListModelCouse = new List<Course>();
-            Thread.Sleep(1000
+            NavegarPagina(_driver,term);
             ListModelCouse = RasparPagina(_driver);
             do
             {
@@ -77,6 +60,27 @@ namespace RpaAlura.Infraestrutura.Automacao
                 // Caso o elemento não se torne clicável no tempo estipulado
                 return false;
             }
+        }
+        public static void NavegarPagina(IWebDriver _driver,string term)
+        {
+            _driver.Navigate().GoToUrl("https://www.alura.com.br/");
+            Thread.Sleep(1000);
+            var searchBox = _driver.FindElement(By.XPath("/html/body/main/section[1]/header/div/nav/div[2]/form/input"));
+            Thread.Sleep(1000);
+            var ButonFilter = _driver.FindElement(By.XPath("/html/body/main/section[1]/header/div/nav/div[2]/form/input"));
+            Thread.Sleep(1000);
+            ButonFilter.Click();
+            searchBox.SendKeys(term);
+            searchBox.Submit();
+            var ButtonCourse = _driver.FindElement(By.XPath("/html/body/div[2]/div[2]/div/span"));
+            Thread.Sleep(1000);
+            ButtonCourse.Click();
+            var filter = _driver.FindElement(By.XPath("/html/body/div[2]/div[1]/div[2]/ul/li[1]/label"));
+            filter.Click();
+            var ButtonFilterResult = _driver.FindElement(By.XPath("/html/body/div[2]/div[1]/button"));
+            Thread.Sleep(1000);
+            ButtonFilterResult.Click();
+            Thread.Sleep(1000);
         }
 
         public static List<Course> RasparPagina(IWebDriver _driver)
