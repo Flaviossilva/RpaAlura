@@ -8,7 +8,7 @@ namespace RpaAlura.Dominio.Servicos
 {
     public interface IFormAutomationService
     {
-        Task ExecuteFormFillingAsync(string searchTerm);
+        Task ExecuteFormFillingAsync(string? searchTerm);
     }
 }
 
