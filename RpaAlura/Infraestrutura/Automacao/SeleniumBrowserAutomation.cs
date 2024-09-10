@@ -72,12 +72,13 @@ namespace RpaAlura.Infraestrutura.Automacao
             ButonFilter.Click();
             searchBox.SendKeys(term);
             searchBox.Submit();
-            var ButtonCourse = _driver.FindElement(By.XPath("/html/body/div[2]/div[2]/div/span"));
+            Thread.Sleep(1000);
+            var ButtonCourse = _driver.FindElement(By.XPath("/html/body/div[3]/div[2]/div/span"));
             Thread.Sleep(1000);
             ButtonCourse.Click();
-            var filter = _driver.FindElement(By.XPath("/html/body/div[2]/div[1]/div[2]/ul/li[1]/label"));
+            var filter = _driver.FindElement(By.XPath("/html/body/div[3]/div[1]/div[2]/ul/li[1]/label/div/span[1]"));
             filter.Click();
-            var ButtonFilterResult = _driver.FindElement(By.XPath("/html/body/div[2]/div[1]/button"));
+            var ButtonFilterResult = _driver.FindElement(By.XPath("/html/body/div[3]/div[1]/button"));
             Thread.Sleep(1000);
             ButtonFilterResult.Click();
             Thread.Sleep(1000);
@@ -87,14 +88,13 @@ namespace RpaAlura.Infraestrutura.Automacao
         {
             List<Course> ListModelCouse = new List<Course>();
             Actions actions = new Actions(_driver);
-            var TableCourse = _driver.FindElement(By.XPath("/html/body/div[2]/div[2]/section/ul"));
+            var TableCourse = _driver.FindElement(By.XPath("/html/body/div[3]/div[2]/section/ul"));
             var tableRow = TableCourse.FindElements(By.TagName("li"));
             foreach (IWebElement row1 in tableRow)
             {
+                Thread.Sleep(700);
                 IWebElement searchProfessor = null;
                 var xpaths = new[] { "/html/body/section[2]/div[1]/section/div/div/div/h3", "/html/body/section[2]/div[1]/section/div/div/div[2]/div/div/h3" };
-                actions.SendKeys(OpenQA.Selenium.Keys.Down).Build().Perform();
-                actions.SendKeys(OpenQA.Selenium.Keys.Down).Build().Perform();
                 row1.Click();
                 Course ModelCouse = new Course();
                 List<string> listDescription = new List<string>();
@@ -122,6 +122,9 @@ namespace RpaAlura.Infraestrutura.Automacao
                 ListModelCouse.Add(ModelCouse);
                 _driver.Navigate().Back();
                 Thread.Sleep(1400);
+                actions.SendKeys(OpenQA.Selenium.Keys.Down).Build().Perform();
+                actions.SendKeys(OpenQA.Selenium.Keys.Down).Build().Perform();
+                actions.SendKeys(OpenQA.Selenium.Keys.Down).Build().Perform();
             }
             _driver.Quit();
             return ListModelCouse;
